@@ -2,11 +2,16 @@
 <html>
 <head>
   <title>RubyExams</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn/Review Ruby and Rails by taking Exams!">
+  <meta name="author" content="Patrick Garrett Pavesi">
+  <%= stylesheet_link_tag "application", :media => "all" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <header>
-    <a class="brand" href="/">Ruby Exams</a>
+    <%= render '/layouts/navigation' %>
   </header>
 
   <div class="container">
@@ -14,7 +19,7 @@
   </div>
 
   <footer>
-
+    <%= render '/layouts/bottom_navigation' %>
   </footer>
 </body>
 </html>

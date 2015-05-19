@@ -11,10 +11,39 @@
  *= require_self
  *= require_tree .
  */
-@import 'bootstrap';
+@import "bootstrap";
 
 * {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
+
+  -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+        border-radius: 0 !important;
+}
+
+#logo_ruby {
+  color: #b21801;
+}
+
+#logo_exams {
+  color: #fff;
+}
+
+.navbar-fixed-bottom {
+  height: 20px;
+}
+
+#bottom_nav ul {
+  position: relative;
+  bottom: 10px;
+}
+
+#bottom_nav li a{
+  font-size: 12px;
+}
+
+#tealeaf:hover{
+  color: #3b9c25;
 }
