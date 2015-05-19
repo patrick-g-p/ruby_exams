@@ -21,10 +21,16 @@
   -webkit-border-radius: 0 !important;
     -moz-border-radius: 0 !important;
         border-radius: 0 !important;
+
+  font-family: 'Roboto Slab', serif;
+}
+
+#logo:hover {
+  text-decoration: overline #8d1907;
 }
 
 #logo_ruby {
-  color: #b21801;
+  color: #aa1e08;
 }
 
 #logo_exams {
@@ -46,4 +52,32 @@
 
 #tealeaf:hover{
   color: #3b9c25;
+}
+
+#category_list{
+  margin-top: 50px;
+}
+
+#category_list li{
+  margin-bottom: 50px;
+  font-size: 35px;
+  color:black;
+}
+
+#main_area {
+  text-align: center;
+}
+
+.list_links {
+  margin: 50px 0;
+  font-size: 30px;
+}
+
+.list_links a, .list_links a:hover{
+  color: #000;
+}
+
+.list_links a:hover {
+  font-size: 1.10em;
+  text-decoration: none;
 }

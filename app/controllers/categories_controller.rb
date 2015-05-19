@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   def index
-    @category = Category.all.sort_by {|category| category.title}
+    @category = Category.all.sort_by {|category| category.name}
   end
 
   def show

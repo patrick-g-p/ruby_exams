@@ -1,0 +1,11 @@
+<div class="page-header">
+  <h1>Select an Exam category <small>Login to contribute an Exam!</small></h1>
+</div>
+
+<h2><%= link_to "Create an Exam", new_exam_path %></h2>
+
+<ul>
+  <% @category.each do |category|%>
+    <li class="list_links"><%= link_to "#{category.name}", category_path(category)%></li>
+  <% end %>
+</ul>

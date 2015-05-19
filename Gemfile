@@ -12,7 +12,6 @@ gem 'sqlite3'
 gem 'sass-rails', '~> 4.0.0'
 
 # Use bootstrap
-
 gem 'bootstrap-sass', '~> 2.3.2.0'
 
 # Use Uglifier as compressor for JavaScript assets

@@ -1,9 +1,9 @@
 <div class="navbar navbar-inverse">
   <div class="navbar-inner">
-    <a class="brand" href="/"><span id="logo_ruby">Ruby</span> <span id="logo_exams">Exams</span></a>
+    <a class="brand" id="logo" href="/"><span id="logo_ruby">Ruby</span> <span id="logo_exams">Exams</span></a>
     <ul class="nav">
-      <li><a href="#">Categories</a></li>
-      <li><a href="#">Login</a></li>
+      <li><%= link_to 'Categories', categories_path %></li>
+      <li><%= link_to 'Login', '#' %></li>
     </ul>
 
     <div class="pull-right">
