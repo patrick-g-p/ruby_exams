@@ -1,0 +1,19 @@
+<%= form_for exam do |f| %>
+  <div class="control-group">
+    <%= f.label :name, "Name/Topic of your Exam" %>
+    <%= f.text_field :name, placeholder: 'FormHelper, etc...', class:'form_inputs' %>
+  </div>
+  <div class="control-group">
+    <%= f.label :doc_url, "Documentation Link" %>
+    <%= f.text_field :doc_url, placeholder: 'https://devdocs.io/...', class:'form_inputs' %>
+  </div>
+  <div class="control-group">
+    <%= f.label :category_ids, "Choose a Category" %>
+    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |box| %>
+    <%= box.label(class:"checkbox inline") {box.check_box(class:"checkbox") + box.text} %>
+  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.submit class: 'btn btn-large btn-success' %>
+  </div>
+<% end %>

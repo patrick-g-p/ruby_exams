@@ -68,6 +68,15 @@
   text-align: center;
 }
 
+label {
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+
+input {
+  margin: 10px 0;
+}
+
 .list_links {
   margin: 50px 0;
   font-size: 30px;
@@ -80,4 +89,9 @@
 .list_links a:hover {
   font-size: 1.10em;
   text-decoration: none;
+}
+
+.form_inputs {
+  width: 50%;
+  height: 40px !important;
 }
