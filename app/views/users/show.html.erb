@@ -1,0 +1,22 @@
+<%= render '/shared/page_header', header: "#{@user.username.capitalize}'s Profile", subtext: ''%>
+
+<div class="well">
+  <div class="dl-horizontal">
+    <div class="pull-right">
+      <%= link_to "[Update your profile]", edit_user_path(@user)%>
+    </div>
+    <dt>Username:</dt>
+    <dd><%= @user.username.capitalize %></dd>
+    <dt>Timezone:</dt>
+    <dd><%= @user.time_zone %></dd>
+  </div>
+</div>
+
+<div class="well">
+  <p>Exams Created by <%= "#{@user.username.capitalize}" %></p>
+  <ol>
+    <% @user.exams.each do |exam| %>
+      <li><%= link_to exam.name, exam_path(exam)%></li>
+    <% end %>
+  </ol>
+</div>

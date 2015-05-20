@@ -1,0 +1,17 @@
+<%= form_for user do |f| %>
+  <div class="control-group">
+    <%= f.label :username, user.new_record? ? "Pick a username" : "Updated username" %>
+    <%= f.text_field :username, class:'form_inputs' %>
+  </div>
+  <div class="control-group">
+    <%= f.label :password, user.new_record? ? "Input a password you'll remember!" : "Updated password" %>
+    <%= f.password_field :password, class:'form_inputs' %>
+  </div>
+  <div class="control-group">
+    <%= f.label :time_zone, user.new_record? ? "Choose a timezone" : "Updated timezone" %>
+    <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, default: Time.zone.name %>
+  </div>
+  <div class="control-group">
+    <%= f.submit class: 'btn btn-large btn-success' %>
+  </div>
+<% end %>

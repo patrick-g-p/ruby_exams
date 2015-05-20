@@ -1,0 +1,16 @@
+<%= render '/shared/page_header', header: 'Please Login', subtext: 'Welcome back to RubyExams!'%>
+
+<div class="">
+  <%= form_tag '/login' %>
+  <div class="control-group">
+    <%= label_tag :username, "Username" %>
+    <%= text_field_tag :username, "", class: 'form_inputs' %>
+  </div>
+  <div class="control-group">
+    <%= label_tag :password, "Password" %>
+    <%= password_field_tag :password, "", class: 'form_inputs' %>
+  </div>
+  <div class="control-group">
+    <%= submit_tag "Login", class: "btn btn-large btn-success" %>
+  </div>
+</div>

@@ -1,7 +1,9 @@
 <small class="pull-right"><%= link_to "[Admin, add a new category to the list?]", new_category_path%></small>
 <%= render '/shared/page_header', header: 'Select an Exam category', subtext: 'Login to contribute an Exam'%>
 
+<% if logged_in? %>
 <h2><%= link_to "Create an Exam", new_exam_path %></h2>
+<% end %>
 
 <ul>
   <% @category.each do |category|%>
