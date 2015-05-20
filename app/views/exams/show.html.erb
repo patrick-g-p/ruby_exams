@@ -9,13 +9,13 @@
 
 <div class="row">
   <% @exam.questions.each do |question| %>
-  <div class="well span6" id="exam_questions">
+  <div class="well span12" id="exam_questions">
     <p>Questions</p>
     <ol>
       <li><%= question.body %></li>
     </ol>
   </div>
-  <div class="well span6" id="exam_answers">
+  <div class="hide_answers" id="exam_answers">
     <p>Answers</p>
     <ol>
       <li><%= question.answer.body %></li>

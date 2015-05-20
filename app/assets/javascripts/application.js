@@ -13,3 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function(){
+  $('#answer_button').click(function() {
+    $('#exam_questions').removeClass('span12').addClass("span6")
+    $('#exam_answers').removeClass('hide_answers').addClass("well span6")
+  });
+});
