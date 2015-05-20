@@ -11,6 +11,7 @@ class ExamsController < ApplicationController
 
   def create
     @exam = Exam.new(exam_params)
+    @exam.creator = current_user
 
     if @exam.save
       redirect_to new_exam_question_path(@exam)

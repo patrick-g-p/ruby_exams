@@ -1,5 +1,25 @@
 <small class="pull-right"><%= link_to "[Need to go back and change something?]", new_exam_question_path(@exam) %></small>
-<%= render '/shared/page_header', header: "#{@exam.name.capitalize}", subtext: "Create on: #{friendly_date_time_fixer(@exam.created_at)} by Username goes here" %>
-<%= link_to "Need help with some of the questions?", url_fixer(@exam.doc_url) %>
+<%= render '/shared/page_header', header: "#{@exam.name.capitalize}", subtext: "Create on: #{friendly_date_time_fixer(@exam.created_at)} by #{@exam.creator.username}" %>
 
-<p>Questions:</p>
+<h2>Fire up IRB and try to answer the questions</h2>
+<h3>If you get stuck <%= link_to "check out the documentation!", url_fixer(@exam.doc_url) %></h3>
+<h3>Click the button below to display the answers</h3>
+
+<%= button_tag "Show Answers", {class:"btn btn-large btn-danger", id: "answer_button"} %>
+
+<div class="row">
+  <% @exam.questions.each do |question| %>
+  <div class="well span6" id="exam_questions">
+    <p>Questions</p>
+    <ol>
+      <li><%= question.body %></li>
+    </ol>
+  </div>
+  <div class="well span6" id="exam_answers">
+    <p>Answers</p>
+    <ol>
+      <li><%= question.answer.body %></li>
+    </ol>
+  </div>
+  <% end %>
+</div>

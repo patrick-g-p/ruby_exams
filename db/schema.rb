@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519180449) do
+ActiveRecord::Schema.define(version: 20150520182137) do
 
   create_table "answers", force: true do |t|
     t.text     "body"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20150519180449) do
   create_table "users", force: true do |t|
     t.string   "username"
     t.string   "password_digest"
-    t.string   "role"
+    t.string   "role",            default: "user"
     t.string   "time_zone"
     t.datetime "created_at"
     t.datetime "updated_at"

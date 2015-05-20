@@ -104,3 +104,29 @@ input {
   font-size: 18px;
   margin-bottom: 20px;
 }
+
+#answer_button {
+  margin: 25px 0;
+}
+
+// #exam_answers {
+//   display: none;
+// }
+
+#exam_questions p {
+  font-size: 24px;
+  text-decoration: underline;
+}
+
+#exam_answers p {
+  font-size: 24px;
+  text-decoration: underline;
+}
+
+#exam_questions li {
+  font-size: 20px;
+}
+
+#exam_answers li {
+  font-size: 20px;
+}
