@@ -7,7 +7,7 @@
 </div>
 
 <div class="well">
-  <h3>Questions already in the Exam:</h3>
+  <h3>Questions already in this Exam:</h3>
   <ol>
     <% @exam.questions.each do |question| %>
       <li><%= question.body %> - <%= question.answer.body %></li>

@@ -25,7 +25,11 @@ class QuestionsController < ApplicationController
   end
 
   def update
-
+    if @question.update(question_params)
+      redirect_to new_exam_question_path(@exam)
+    else
+      render 'edit'
+    end
   end
 
   private

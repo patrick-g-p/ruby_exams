@@ -1,4 +1,4 @@
-<%= render '/shared/page_header', header: "Edit your question", subtext:"" %>
+<%= render '/shared/page_header', header: "Edit your question", subtext:"Note that the answer right now is: #{@question.answer.body}" %>
 
 <%= render 'form', question: [@exam, @question] %>
 
