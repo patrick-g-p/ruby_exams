@@ -7,4 +7,12 @@ module ApplicationHelper
       "http://#{url}"
     end
   end
+
+  def friendly_date_time_fixer(date)
+    # if logged_in? && !current_user.time_zone.blank?
+    #   date = date.in_time_zone(current_user.time_zone)
+    # end
+
+    date.strftime(format="%m/%d/%Y at %l:%M%P %Z")
+  end
 end

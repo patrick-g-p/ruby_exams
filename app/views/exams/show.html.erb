@@ -1,5 +1,5 @@
 <small class="pull-right"><%= link_to "[Need to go back and change something?]", new_exam_question_path(@exam) %></small>
-<%= render '/shared/page_header', header: "#{@exam.name.capitalize}", subtext: "" %>
+<%= render '/shared/page_header', header: "#{@exam.name.capitalize}", subtext: "Create on: #{friendly_date_time_fixer(@exam.created_at)} by Username goes here" %>
 <%= link_to "Need help with some of the questions?", url_fixer(@exam.doc_url) %>
 
 <p>Questions:</p>
