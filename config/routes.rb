@@ -4,7 +4,7 @@ RubyExams::Application.routes.draw do
   get '/sign_up', to: 'users#new'
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
-  get '/about', to: 'pages#about'
+  get '/faq', to: 'pages#faq'
 
   resources :users, except: [:index, :destroy]
 
