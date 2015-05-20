@@ -1,19 +1,17 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:edit, :update]
-  before_action :set_exam, only: [:edit, :update]
+  before_action :set_exam
 
   def new
-    @exam = Exam.find(params[:exam_id])
-
     @question = Question.new
   end
 
   def create
     @question = Question.new(question_params)
-    @question.exam_id = params[:exam_id]
+    @question.exam_id = @exam.id
 
     if @question.save
-      redirect_to new_exam_question_answer_path(params[:exam_id], @question)
+      redirect_to new_exam_question_answer_path(@exam, @question)
     else
       render 'new'
     end
@@ -39,7 +37,7 @@ class QuestionsController < ApplicationController
   end
 
   def set_exam
-    @exam = Exam.find(params[:exam_id])
+    @exam = Exam.find_by(slug: params[:exam_id])
   end
 
   def set_question

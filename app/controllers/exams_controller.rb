@@ -43,6 +43,6 @@ class ExamsController < ApplicationController
   end
 
   def set_exam
-    @exam = Exam.find(params[:id])
+    @exam = Exam.find_by(slug: params[:id])
   end
 end

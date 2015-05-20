@@ -24,6 +24,8 @@
   <% end %>
 </div>
 
+<hr />
+
 <div id="vote_area">
 
 </div>
@@ -37,7 +39,7 @@
         <%= f.text_area :body, class:'form_inputs' %>
       </div>
       <div class="control-group">
-        <%= f.submit class: 'btn btn-info' %>
+        <%= f.submit class: 'btn btn-large btn-info' %>
       </div>
     <% end %>
   </div>
@@ -46,11 +48,6 @@
 
 <div>
   <h3>Comments:</h3>
-  <% @exam.comments.each do |comment| %>
-    <div class="well">
-      <p><%= comment.body %></p>
-      <small>Posted by <%= link_to comment.creator.username, user_path(comment.creator) %> at <%= friendly_date_time_fixer(comment.created_at) %></small>
-    </div>
-  <% end %>
+  <%= render 'comments', exam: @exam %>
 </div>
 <a href="#top" class="btn btn-large">Back to the top</a>

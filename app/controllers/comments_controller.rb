@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   def create
-    @exam = Exam.find(params[:exam_id])
+    @exam = Exam.find_by(slug: params[:exam_id])
     @comment = @exam.comments.new(params.require(:comment).permit(:body))
     @comment.creator = current_user
 
