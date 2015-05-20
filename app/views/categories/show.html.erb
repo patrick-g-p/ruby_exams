@@ -1,0 +1,7 @@
+<%= render '/shared/page_header', header: "#{@category.name.capitalize}", subtext: "Here are all the exams currently in this category." %>
+
+<ul>
+  <% @category.exams.each do |exam| %>
+    <li class="list_links"><%= link_to "#{exam.name}", exam_path(exam) %></li>
+  <% end %>
+</ul>

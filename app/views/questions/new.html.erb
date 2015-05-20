@@ -1,9 +1,10 @@
+<small class="pull-right"><%= link_to "[Change exam name/topic]", edit_exam_path(@exam) %></small>
 <%= render '/shared/page_header', header: "Exam name: #{@exam.name}", subtext:"Now create some questions." %>
 
 <%= render 'form', question: [@exam, @question] %>
 
 <div>
-  <p>Or go and see your completed <%= link_to 'Exam', exam_path(@exam) %>!</p>
+  <h3>When you're done, go see your completed <%= link_to 'Exam', exam_path(@exam) %>!</h3>
 </div>
 
 <div class="well">

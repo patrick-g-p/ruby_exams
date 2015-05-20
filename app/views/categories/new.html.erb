@@ -1,0 +1,11 @@
+<%= render '/shared/page_header', header: "Add a new category to RubyExams", subtext: "Right now this is an admin only feature." %>
+
+<%= form_for @category do |f| %>
+  <div class="control-group">
+    <%= f.label :name, "Name of the new Category" %>
+    <%= f.text_field :name, placeholder: "Maybe Sinatra, or the Pry gem?", class:"form_inputs" %>
+  </div>
+  <div class="control-group">
+    <%= f.submit class: 'btn btn-large btn-success' %>
+  </div>
+<% end %>
