@@ -1,13 +1,18 @@
 class CommentsController < ApplicationController
   def create
     @exam = Exam.find(params[:exam_id])
-    @comment = Comment.new
+    @comment = @exam.comments.new(params.require(:comment).permit(:body))
+    @comment.creator = current_user
 
     if @comment.save
-      redirect_to exams_path(@exam)
+      redirect_to exam_path(@exam)
     else
       render "exams/show"
     end
   end
-  
+
+  def vote
+
+  end
+
 end

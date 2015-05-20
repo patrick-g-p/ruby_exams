@@ -10,15 +10,7 @@ RubyExams::Application.routes.draw do
   resources :users, except: [:index, :destroy]
 
   resources :exams, except: [:index, :destroy] do
-    member do
-      post 'vote'
-    end
-
-    resources :comments, only: [:create] do
-      member do
-        post 'vote'
-      end
-    end
+    resources :comments, only: [:create]
 
     resources :questions, except: [:index, :show, :destroy] do
       resources :answers, except: [:index, :show, :destroy]

@@ -1,7 +1,7 @@
 <small class="pull-right"><%= link_to "[Need to go back and change something?]", new_exam_question_path(@exam) %></small>
-<%= render '/shared/page_header', header: "#{@exam.name.capitalize}", subtext: "Create on: #{friendly_date_time_fixer(@exam.created_at)} by #{@exam.creator.username}" %>
+<%= render '/shared/page_header', header: "#{@exam.name.capitalize}", subtext: "Create on: #{friendly_date_time_fixer(@exam.created_at)} by #{@exam.creator.username}", id: "top" %>
+<h2>Fire up <%= link_to 'IRB', 'http://ruby-doc.org/stdlib-2.0/libdoc/irb/rdoc/IRB.html'%> and try to answer the questions</h2>
 
-<h2>Fire up IRB and try to answer the questions</h2>
 <h3>If you get stuck <%= link_to "check out the documentation!", url_fixer(@exam.doc_url) %></h3>
 <h3>Click the button below to display the answers</h3>
 
@@ -23,3 +23,34 @@
   </div>
   <% end %>
 </div>
+
+<div id="vote_area">
+
+</div>
+
+<% if logged_in? %>
+<div id="comment_area">
+  <div>
+    <%= form_for [@exam, @comment]  do |f| %>
+      <div class="control-group">
+        <%= f.label :body, "Enjoyed the Exam? Notice an error? Add a comment!" %>
+        <%= f.text_area :body, class:'form_inputs' %>
+      </div>
+      <div class="control-group">
+        <%= f.submit class: 'btn btn-info' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<% end %>
+
+<div>
+  <h3>Comments:</h3>
+  <% @exam.comments.each do |comment| %>
+    <div class="well">
+      <p><%= comment.body %></p>
+      <small>Posted by <%= link_to comment.creator.username, user_path(comment.creator) %> at <%= friendly_date_time_fixer(comment.created_at) %></small>
+    </div>
+  <% end %>
+</div>
+<a href="#top" class="btn btn-large">Back to the top</a>

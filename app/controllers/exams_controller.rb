@@ -2,7 +2,7 @@ class ExamsController < ApplicationController
   before_action :set_exam, only: [:show, :edit, :update]
 
   def show
-
+    @comment = Comment.new
   end
 
   def new
@@ -30,6 +30,10 @@ class ExamsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def vote
+
   end
 
   private
