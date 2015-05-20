@@ -1,0 +1,9 @@
+<%= form_for question do |f| %>
+  <div class="control-group">
+    <%= f.label :body, "Question" %>
+    <%= f.text_field :body, placeholder: "Example: What does the Array#slice method do?", class:'form_inputs' %>
+  </div>
+  <div class="control-group">
+    <%= f.submit class: 'btn btn-large btn-success' %>
+  </div>
+<% end %>

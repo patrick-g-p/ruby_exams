@@ -13,7 +13,7 @@ class ExamsController < ApplicationController
     @exam = Exam.new(exam_params)
 
     if @exam.save
-      redirect_to exam_path(@exam)
+      redirect_to new_exam_question_path(@exam)
     else
       render 'new'
     end

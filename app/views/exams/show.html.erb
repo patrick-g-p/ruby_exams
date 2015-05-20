@@ -1,1 +1,4 @@
-<h1>Show</h1>
+<%= render '/shared/page_header', header: "#{@exam.name.capitalize}", subtext: "" %>
+<%= link_to "Need help with some of the questions?", url_fixer(@exam.doc_url) %>
+
+<p>Questions:</p>

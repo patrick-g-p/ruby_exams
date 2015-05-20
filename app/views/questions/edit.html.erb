@@ -1,0 +1,5 @@
+<%= render '/shared/page_header', header: "Edit your question", subtext:"" %>
+
+<%= render 'form', question: [@exam, @question] %>
+
+<%= link_to 'Cancel Edit', new_exam_question_path(@exam) %>

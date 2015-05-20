@@ -1,0 +1,3 @@
+<%= render '/shared/page_header', header: "Question: #{@question.body}", subtext:"Type out the answer." %>
+
+<%= render 'form', answer: [@exam, @question, @answer] %>

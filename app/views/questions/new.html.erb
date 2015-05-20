@@ -1,0 +1,17 @@
+<%= render '/shared/page_header', header: "Exam name: #{@exam.name}", subtext:"Now create some questions." %>
+
+<%= render 'form', question: [@exam, @question] %>
+
+<div>
+  <p>Or go and see your completed <%= link_to 'Exam', exam_path(@exam) %>!</p>
+</div>
+
+<div class="well">
+  <h3>Questions already in the Exam:</h3>
+  <ol>
+    <% @exam.questions.each do |question| %>
+      <li><%= question.body %> - <%= question.answer.body %></li>
+      <small><%= link_to "Edit this question", edit_exam_question_path(@exam, question) %> or <%= link_to "edit the answer", edit_exam_question_answer_path(@exam, question, question.answer)%></small>
+    <% end %>
+  </ol>
+</div>

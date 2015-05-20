@@ -1,0 +1,9 @@
+<%= form_for answer do |f| %>
+  <div class="control-group">
+    <%= f.label :body, "Answer" %>
+    <%= f.text_field :body, placeholder: "Example: Hash#merge adds the contents of a hash to the caller hash.", class:'form_inputs' %>
+  </div>
+  <div class="control-group">
+    <%= f.submit class: 'btn btn-large btn-success' %>
+  </div>
+<% end %>
