@@ -3,6 +3,7 @@ class AnswersController < ApplicationController
   before_action :set_question
   before_action :set_exam
   before_action :require_user
+  before_action :require_same_user
 
   def new
     @answer = Answer.new
@@ -50,4 +51,11 @@ class AnswersController < ApplicationController
   def set_exam
     @exam = Exam.find_by(slug: params[:exam_id])
   end
+
+  def require_same_user
+    unless logged_in? && current_user == @exam.creator
+      no_access
+    end
+  end
+
 end

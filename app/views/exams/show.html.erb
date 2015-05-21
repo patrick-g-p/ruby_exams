@@ -1,13 +1,12 @@
 <%= render '/shared/page_header', header: "#{@exam.name.capitalize}", subtext: "Create on: #{friendly_date_time_fixer(@exam.created_at)} by #{@exam.creator.username}", id: "top" %>
-<h2>Fire up <%= link_to 'IRB', 'http://ruby-doc.org/stdlib-2.0/libdoc/irb/rdoc/IRB.html'%> and try to answer the questions</h2>
-
+<h3>Fire up <%= link_to 'IRB', 'http://ruby-doc.org/stdlib-2.0/libdoc/irb/rdoc/IRB.html'%> and try to answer the questions</h3>
 <h3>If you get stuck <%= link_to "check out the documentation!", url_fixer(@exam.doc_url) %></h3>
 <h3>Click the button below to display the answers</h3>
 
 <%= button_tag "Show Answers", {class:"btn btn-large btn-danger", id: "answer_button"} %>
 
 <div class="row">
-  <% @exam.questions.each do |question| %>
+  <% @exam.questions.reload.each do |question| %>
   <div class="well span12" id="exam_questions">
     <p>Questions</p>
     <ol>
@@ -33,7 +32,7 @@
   <% end %>
   <p>Vote to give some feedback.</p>
   <p id='exam_<%= @exam.slug %>_votes'>Current vote total: <%= @exam.total_number_of_votes %></p>
-  <small id='exam_<%= @exam.slug %>_error'></small>
+  <p id='exam_<%= @exam.slug %>_error'></p>
   <% if logged_in? %>
     <%= link_to vote_exam_path(@exam, vote: false), method: 'post', remote: true do %>
       <button type="button" class="btn btn-large btn-warning" id="exam_<%= @exam.slug %>_dislike_button">I didn't like this exam</button>
@@ -46,6 +45,9 @@
 <% if logged_in? %>
 <div id="comment_area">
   <div>
+    <% if @comment.errors.any? %>
+    <%= render 'shared/error_message', object: @comment %>
+    <% end %>
     <%= form_for [@exam, @comment]  do |f| %>
       <div class="control-group">
         <%= f.label :body, "Enjoyed the Exam? Notice an error? Add a comment!" %>

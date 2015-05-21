@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:edit, :update]
   before_action :set_exam
   before_action :require_user
+  before_action :require_same_user
 
   def new
     @question = Question.new
@@ -45,6 +46,12 @@ class QuestionsController < ApplicationController
 
   def set_question
     @question = Question.find(params[:id])
+  end
+
+  def require_same_user
+    unless logged_in? && current_user == @exam.creator
+      no_access
+    end
   end
 
 end

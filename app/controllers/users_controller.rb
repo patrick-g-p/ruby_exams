@@ -47,7 +47,7 @@ class UsersController < ApplicationController
 
   def require_same_user
     unless logged_in? && current_user == @user
-      no_acess
+      no_access
     end
   end
 

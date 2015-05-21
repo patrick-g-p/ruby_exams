@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by(username: params[:username])
 
     if user && user.authenticate(params[:password])
-      flash[:notice] = "Welcome to Ruby Exams"
+      flash[:notice] = "You logged in successfully. Have fun learning!"
       session[:user_id] = user.id
       redirect_to root_path
     else

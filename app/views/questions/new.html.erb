@@ -10,7 +10,7 @@
 <div class="well">
   <h3>Questions already in this Exam:</h3>
   <ol>
-    <% @exam.questions.each do |question| %>
+    <% @exam.questions.reload.each do |question| %>
       <li><%= question.body %> - <%= question.answer.body %></li>
       <small><%= link_to "Edit this question", edit_exam_question_path(@exam, question) %> or <%= link_to "edit the answer", edit_exam_question_answer_path(@exam, question, question.answer)%></small>
     <% end %>

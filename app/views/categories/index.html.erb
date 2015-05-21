@@ -1,4 +1,6 @@
+<% if logged_in? && current_user.admin? %>
 <small class="pull-right"><%= link_to "[Admin, add a new category to the list?]", new_category_path%></small>
+<% end %>
 <%= render '/shared/page_header', header: 'Select an Exam category', subtext: 'Login to contribute an Exam'%>
 
 <% if logged_in? %>

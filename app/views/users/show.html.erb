@@ -1,8 +1,10 @@
 <%= render '/shared/page_header', header: "#{@user.username.capitalize}'s Profile", subtext: ''%>
 
+<% if logged_in? && current_user == @user %>
 <div class="pull-right">
   <%= link_to "[Update your profile]", edit_user_path(@user)%>
 </div>
+<% end %>
 
 <div class="well">
   <div class="dl-horizontal">
@@ -18,7 +20,9 @@
   <ol>
     <% @user.exams.each do |exam| %>
       <li><%= link_to exam.name, exam_path(exam)%></li>
+      <% if logged_in? && current_user == @user %>
       <p><%= link_to "[Edit this Exam]", edit_exam_path(exam)%></p>
+      <% end %>
     <% end %>
   </ol>
 </div>

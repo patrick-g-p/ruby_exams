@@ -1,5 +1,5 @@
-<% if question.errors.any? %>
-<%= render 'shared/error_message', object: question %>
+<% if question[1].errors.any? %>
+<%= render 'shared/error_message', object: question[1] %>
 <% end %>
 
 <%= form_for question do |f| %>

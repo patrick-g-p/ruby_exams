@@ -1,4 +1,4 @@
 <div class="well">
-    <p><%= comment.body %></p>
+    <p id="comment_text"><%= comment.body %></p>
     <small>Posted by <%= link_to comment.creator.username, user_path(comment.creator) %> at <%= friendly_date_time_fixer(comment.created_at) %></small>
 </div>
