@@ -24,6 +24,10 @@
   </div>
 </div>
 
+<% if logged_in? && current_user == @exam.creator %>
+<%= link_to "Need to edit the exam? Click here.", new_exam_question_path(@exam) %>
+<% end %>
+
 <hr />
 
 <div class="text-center" id="vote_area">
