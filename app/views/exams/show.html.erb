@@ -6,20 +6,22 @@
 <%= button_tag "Show Answers", {class:"btn btn-large btn-danger", id: "answer_button"} %>
 
 <div class="row">
-  <% @exam.questions.reload.each do |question| %>
   <div class="well span12" id="exam_questions">
     <p>Questions</p>
     <ol>
+      <% @exam.questions.reload.each do |question| %>
       <li><%= question.body %></li>
+      <% end %>
     </ol>
   </div>
   <div class="hide_answers" id="exam_answers">
     <p>Answers</p>
     <ol>
+      <% @exam.questions.reload.each do |question| %>
       <li><%= question.answer.body %></li>
+      <% end %>
     </ol>
   </div>
-  <% end %>
 </div>
 
 <hr />
