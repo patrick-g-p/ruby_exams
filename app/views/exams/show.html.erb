@@ -1,4 +1,4 @@
-<%= render '/shared/page_header', header: "#{@exam.name.capitalize}", subtext: "Create on: #{friendly_date_time_fixer(@exam.created_at)} by #{@exam.creator.username}", id: "top" %>
+<%= render '/shared/page_header', header: "#{@exam.name.capitalize}", subtext: "Create on: #{friendly_date_time_fixer(@exam.created_at)} by #{capitalize_names(@exam.creator.username)}", id: "top" %>
 <h3>Fire up <%= link_to 'IRB', 'http://ruby-doc.org/stdlib-2.0/libdoc/irb/rdoc/IRB.html'%> and try to answer the questions</h3>
 <h3>If you get stuck <%= link_to "check out the documentation!", url_fixer(@exam.doc_url) %></h3>
 <h3>Click the button below to display the answers</h3>
@@ -23,6 +23,8 @@
     </ol>
   </div>
 </div>
+
+<%= link_to "Creators Profile", user_path(@exam.creator) %>
 
 <% if logged_in? && current_user == @exam.creator %>
 <%= link_to "Need to edit the exam? Click here.", new_exam_question_path(@exam) %>

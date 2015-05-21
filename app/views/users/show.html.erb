@@ -1,4 +1,4 @@
-<%= render '/shared/page_header', header: "#{@user.username.capitalize}'s Profile", subtext: ''%>
+<%= render '/shared/page_header', header: "#{capitalize_names(@user.username)}'s Profile", subtext: ''%>
 
 <% if logged_in? && current_user == @user %>
 <div class="pull-right">
@@ -9,7 +9,7 @@
 <div class="well">
   <div class="dl-horizontal">
     <dt>Username:</dt>
-    <dd><%= @user.username.capitalize %></dd>
+    <dd><%= capitalize_names(@user.username) %></dd>
     <dt>Timezone:</dt>
     <dd><%= @user.time_zone %></dd>
   </div>
