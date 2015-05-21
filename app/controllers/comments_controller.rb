@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :require_user
+
   def create
     @exam = Exam.find_by(slug: params[:exam_id])
     @comment = @exam.comments.new(params.require(:comment).permit(:body))
@@ -10,9 +12,4 @@ class CommentsController < ApplicationController
       render "exams/show"
     end
   end
-
-  def vote
-
-  end
-
 end

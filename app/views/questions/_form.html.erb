@@ -1,3 +1,7 @@
+<% if question.errors.any? %>
+<%= render 'shared/error_message', object: question %>
+<% end %>
+
 <%= form_for question do |f| %>
   <div class="control-group">
     <%= f.label :body, "Question" %>

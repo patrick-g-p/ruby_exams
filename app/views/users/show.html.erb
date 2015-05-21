@@ -18,6 +18,7 @@
   <ol>
     <% @user.exams.each do |exam| %>
       <li><%= link_to exam.name, exam_path(exam)%></li>
+      <p><%= link_to "[Edit this Exam]", edit_exam_path(exam)%></p>
     <% end %>
   </ol>
 </div>

@@ -1,6 +1,4 @@
-<% exam.comments.reload.each do |comment| %>
-  <div class="well">
+<div class="well">
     <p><%= comment.body %></p>
     <small>Posted by <%= link_to comment.creator.username, user_path(comment.creator) %> at <%= friendly_date_time_fixer(comment.created_at) %></small>
-  </div>
-<% end %>
+</div>

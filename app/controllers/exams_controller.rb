@@ -1,5 +1,7 @@
 class ExamsController < ApplicationController
-  before_action :set_exam, only: [:show, :edit, :update]
+  before_action :set_exam, only: [:show, :edit, :update, :vote]
+  before_action :require_user, except: [:show]
+  before_action :require_same_user_or_admin, only: [:edit, :update]
 
   def show
     @comment = Comment.new
@@ -14,6 +16,7 @@ class ExamsController < ApplicationController
     @exam.creator = current_user
 
     if @exam.save
+      flash[:notice] = "Exam created"
       redirect_to new_exam_question_path(@exam)
     else
       render 'new'
@@ -26,6 +29,7 @@ class ExamsController < ApplicationController
 
   def update
     if @exam.update(exam_params)
+      flash[:notice] = "Exam was updated successfully"
       redirect_to new_exam_question_path(@exam)
     else
       render 'edit'
@@ -33,8 +37,15 @@ class ExamsController < ApplicationController
   end
 
   def vote
+  @vote = Vote.create(voteable: @exam, creator: current_user, vote: params[:vote])
 
+  respond_to do |format|
+    format.html do
+      redirect_to :back
+    end
+    format.js
   end
+end
 
   private
 
@@ -44,5 +55,11 @@ class ExamsController < ApplicationController
 
   def set_exam
     @exam = Exam.find_by(slug: params[:id])
+  end
+
+  def require_same_user_or_admin
+    unless logged_in? && (current_user == @exam.creator || current_user.admin?)
+      no_access
+    end
   end
 end

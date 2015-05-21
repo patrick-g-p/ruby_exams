@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:edit, :update]
   before_action :set_exam
+  before_action :require_user
 
   def new
     @question = Question.new
@@ -11,6 +12,7 @@ class QuestionsController < ApplicationController
     @question.exam_id = @exam.id
 
     if @question.save
+      flash[:notice] = "Question added to Exam"
       redirect_to new_exam_question_answer_path(@exam, @question)
     else
       render 'new'
@@ -24,6 +26,7 @@ class QuestionsController < ApplicationController
 
   def update
     if @question.update(question_params)
+      flash[:notice] = "Question updated"
       redirect_to new_exam_question_path(@exam)
     else
       render 'edit'

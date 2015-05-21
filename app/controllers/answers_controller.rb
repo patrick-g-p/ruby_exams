@@ -2,6 +2,7 @@ class AnswersController < ApplicationController
   before_action :set_answer, only: [:edit, :update]
   before_action :set_question
   before_action :set_exam
+  before_action :require_user
 
   def new
     @answer = Answer.new
@@ -12,6 +13,7 @@ class AnswersController < ApplicationController
     @answer.question_id = @question.id
 
     if @answer.save
+      flash[:notice] = "Answer was linked to your question"
       redirect_to new_exam_question_path(@exam)
     else
       render 'new'
@@ -24,6 +26,7 @@ class AnswersController < ApplicationController
 
   def update
     if @answer.update(answer_params)
+      flash[:notice] = "Answer was updated"
       redirect_to new_exam_question_path(@exam)
     else
       render 'edit'

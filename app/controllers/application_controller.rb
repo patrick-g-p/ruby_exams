@@ -12,4 +12,21 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !!current_user
   end
+
+  def require_user
+    unless logged_in?
+      no_access
+    end
+  end
+
+  def require_admin
+    unless logged_in? && current_user.admin?
+      no_access
+    end
+  end
+
+  def no_access
+    flash[:error] = "You don't have permission to do that."
+    redirect_to root_path
+  end
 end

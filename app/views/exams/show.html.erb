@@ -1,4 +1,3 @@
-<small class="pull-right"><%= link_to "[Need to go back and change something?]", new_exam_question_path(@exam) %></small>
 <%= render '/shared/page_header', header: "#{@exam.name.capitalize}", subtext: "Create on: #{friendly_date_time_fixer(@exam.created_at)} by #{@exam.creator.username}", id: "top" %>
 <h2>Fire up <%= link_to 'IRB', 'http://ruby-doc.org/stdlib-2.0/libdoc/irb/rdoc/IRB.html'%> and try to answer the questions</h2>
 
@@ -26,9 +25,23 @@
 
 <hr />
 
-<div id="vote_area">
-
+<div class="text-center" id="vote_area">
+  <% if logged_in? %>
+    <%= link_to vote_exam_path(@exam, vote: true), method: 'post', remote: true do %>
+      <button type="button" class="btn btn-large btn-success" id="exam_<%= @exam.slug %>_like_button">I enjoyed this exam</button>
+    <% end %>
+  <% end %>
+  <p>Vote to give some feedback.</p>
+  <p id='exam_<%= @exam.slug %>_votes'>Current vote total: <%= @exam.total_number_of_votes %></p>
+  <small id='exam_<%= @exam.slug %>_error'></small>
+  <% if logged_in? %>
+    <%= link_to vote_exam_path(@exam, vote: false), method: 'post', remote: true do %>
+      <button type="button" class="btn btn-large btn-warning" id="exam_<%= @exam.slug %>_dislike_button">I didn't like this exam</button>
+    <% end %>
+  <% end %>
 </div>
+
+<hr />
 
 <% if logged_in? %>
 <div id="comment_area">
@@ -46,8 +59,10 @@
 </div>
 <% end %>
 
-<div>
-  <h3>Comments:</h3>
-  <%= render 'comments', exam: @exam %>
-</div>
+
+<h3>Comments:</h3>
+<% @exam.comments.reload.each do |comment| %>
+  <%= render 'comments', comment: comment %>
+<% end %>
+
 <a href="#top" class="btn btn-large">Back to the top</a>

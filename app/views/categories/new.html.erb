@@ -1,5 +1,9 @@
 <%= render '/shared/page_header', header: "Add a new category to RubyExams", subtext: "Right now this is an admin only feature." %>
 
+<% if @category.errors.any? %>
+<%= render 'shared/error_message', object: @category %>
+<% end %>
+
 <%= form_for @category do |f| %>
   <div class="control-group">
     <%= f.label :name, "Name of the new Category" %>

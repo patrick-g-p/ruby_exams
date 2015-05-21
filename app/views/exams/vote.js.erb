@@ -1,0 +1,7 @@
+<% if @vote.valid? %>
+  $('#exam_<%= @exam.slug %>_votes').html('Votes: <%= @exam.total_number_of_votes %>')
+<% else %>
+  $('#exam_<%= @exam.slug %>_like_button').remove('#exam_<%= @exam.slug %>_like_button')
+  $('#exam_<%= @exam.slug %>_dislike_button').remove('#exam_<%= @exam.slug %>_dislike_button')
+  $('#exam_<%= @exam.slug %>_error').html('You can only vote on an exam once.')
+<% end %>

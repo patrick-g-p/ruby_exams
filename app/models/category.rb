@@ -5,4 +5,6 @@ class Category < ActiveRecord::Base
   has_many :exams, through: :exam_categories
 
   sluggable_column :name
+
+  validates :name, presence: true
 end
